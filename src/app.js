@@ -5,6 +5,9 @@ const forecast = require('./utils/forecast')
 const hbs = require('hbs')
 
 const app = express();
+// If we run app locally it will use port 3000
+// else it will use environment's port (heroku)
+const port = process.env.PORT || 3000;
 
 // Define paths for Express config
 const publicDirPath = path.join(__dirname, '../public');// dir to public folder
@@ -103,6 +106,6 @@ app.get('*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("The server is running on port 3000.");
 })
