@@ -10,7 +10,9 @@ const forecast = (lat, lon, callback) => {
         } else if (body.message) {
             callback(body.message, undefined);
         } else {
-            callback(undefined, body.main.temp + ' degrees Celcius');
+            const temp = body.main.temp;
+            const humidity = body.main.humidity;
+            callback(undefined, 'It is currently ' + temp + ' degrees Celcius and the humidity is ' + humidity + '%.');
         }
     });
 }
